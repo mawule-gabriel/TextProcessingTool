@@ -10,10 +10,16 @@ import javafx.stage.FileChooser;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Set;
 
+
+/**
+ * The RegexController class handles the user interface and actions for text processing,
+ * regex pattern search and replacement, and data management functionality.
+ * It interacts with the TextProcessor and DataManager classes to perform tasks such as
+ * searching and replacing text using regex, managing a list of people, and displaying statistics.
+ */
 public class RegexController {
 
     private TextProcessor textProcessor;
@@ -47,6 +53,10 @@ public class RegexController {
     @FXML private ListView<String> regexExamplesListView;
     @FXML private Button displayRegexExamplesButton;
 
+    /**
+     * Initializes the controller by setting up actions for buttons and updating UI elements.
+     * This method is called when the FXML file is loaded and sets up event listeners for various actions.
+     */
     public void initialize() {
         // Initialize the controllers
         textProcessor = new TextProcessor();
@@ -77,7 +87,10 @@ public class RegexController {
         inputTextArea.textProperty().addListener((observable, oldValue, newValue) -> updateTextStatistics());
     }
 
-    // Display regex examples
+    /**
+     * Displays predefined regex examples in the regexExamplesListView.
+     * The examples are retrieved from the TextProcessor class.
+     */
     private void displayRegexExamples() {
         ArrayList<String> regexExamples = textProcessor.getRegexExamples();
         regexExamplesListView.getItems().clear();
@@ -88,7 +101,10 @@ public class RegexController {
         }
     }
 
-    // Text Processing methods
+    /**
+     * Searches for matches of the regex pattern in the input text area and displays the results in the result list view.
+     * If no matches are found, an error message is shown.
+     */
     private void performSearch() {
         String text = inputTextArea.getText();
         String pattern = regexPatternField.getText();
@@ -108,6 +124,10 @@ public class RegexController {
         }
     }
 
+    /**
+     * Replaces occurrences of the regex pattern in the input text area with the replacement text.
+     * The replaced text is displayed in the result text area.
+     */
     private void performReplace() {
         String text = inputTextArea.getText();
         String pattern = regexPatternField.getText();
@@ -122,6 +142,9 @@ public class RegexController {
         resultTextArea.setText(replacedText);
     }
 
+    /**
+     * Clears all input and result fields, and updates the text statistics.
+     */
     private void clearInput() {
         inputTextArea.clear();
         regexPatternField.clear();
@@ -131,6 +154,10 @@ public class RegexController {
         updateTextStatistics();  // Update stats when input is cleared
     }
 
+    /**
+     * Copies the result from the result text area or list view to the system clipboard.
+     * If the result text area is empty, the content from the result list view is copied instead.
+     */
     private void copyResultToClipboard() {
         String resultText = resultTextArea.getText().isEmpty()
                 ? String.join("\n", resultListView.getItems())
@@ -145,6 +172,11 @@ public class RegexController {
         }
     }
 
+
+    /**
+     * Saves the result from the result text area or list view to a file selected by the user.
+     * The file is saved with a .txt extension.
+     */
     private void saveResultToFile() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save Result");
@@ -167,7 +199,10 @@ public class RegexController {
         }
     }
 
-    // Data Management methods
+    /**
+     * Creates a new person with the given name and age, and adds them to the data manager.
+     * Displays a success message and refreshes the person list.
+     */
     private void createPerson() {
         String name = nameField.getText();
         String ageText = ageField.getText();
@@ -190,6 +225,11 @@ public class RegexController {
         }
     }
 
+
+    /**
+     * Updates an existing person's information (name and age) in the data manager.
+     * Displays a success message and refreshes the person list.
+     */
     private void updatePerson() {
         String name = nameField.getText();
         String ageText = ageField.getText();
@@ -212,6 +252,10 @@ public class RegexController {
         }
     }
 
+
+    /**
+     * Deletes a person by name from the data manager and updates the person list.
+     */
     private void deletePerson() {
         String name = nameField.getText();
 
@@ -227,7 +271,10 @@ public class RegexController {
         displayUniquePersons(); // Refresh unique persons display
     }
 
-    // Helper method to update the ListView with all persons
+
+    /**
+     * Refreshes the list of all persons in the ListView, displaying their names and ages.
+     */
     private void refreshPersonList() {
         Platform.runLater(() -> {
             personListView.getItems().clear();
@@ -239,7 +286,10 @@ public class RegexController {
         });
     }
 
-    // Method to display unique persons (from the Set)
+
+    /**
+     * Displays the list of unique person
+     */
     public void displayUniquePersons() {
         // Clear the current items in the ListView
         Platform.runLater(() -> {
@@ -255,7 +305,9 @@ public class RegexController {
         });
     }
 
-    // Advanced Text Analysis - Update word and character count
+    /**
+     * Updates the word count and character count labels based on the current text in the input text area.
+     */
     private void updateTextStatistics() {
         String inputText = inputTextArea.getText();
         int wordCount = countWords(inputText);
@@ -266,7 +318,13 @@ public class RegexController {
         charCountLabel.setText("Character Count: " + charCount);
     }
 
-    // Helper method to count words in the text
+    /**
+     * Helper method to count the number of words in the given text.
+     * A word is defined as a sequence of non-whitespace characters separated by spaces.
+     *
+     * @param text The text to analyze.
+     * @return The number of words in the text.
+     */
     private int countWords(String text) {
         if (text == null || text.trim().isEmpty()) {
             return 0;
