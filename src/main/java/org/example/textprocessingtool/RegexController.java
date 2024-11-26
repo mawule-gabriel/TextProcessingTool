@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Set;
 
 public class RegexController {
 
@@ -152,6 +153,7 @@ public class RegexController {
             nameField.clear();
             ageField.clear();
             refreshPersonList();
+            displayUniquePersons(); // Refresh unique persons display
         } catch (NumberFormatException e) {
             showError("Age must be a valid number.");
         }
@@ -173,6 +175,7 @@ public class RegexController {
             nameField.clear();
             ageField.clear();
             refreshPersonList();
+            displayUniquePersons(); // Refresh unique persons display
         } catch (NumberFormatException e) {
             showError("Age must be a valid number.");
         }
@@ -190,8 +193,10 @@ public class RegexController {
         showInfo("Person deleted: " + name);
         nameField.clear();
         refreshPersonList();
+        displayUniquePersons(); // Refresh unique persons display
     }
 
+    // Helper method to update the ListView with all persons
     private void refreshPersonList() {
         Platform.runLater(() -> {
             personListView.getItems().clear();
@@ -203,7 +208,22 @@ public class RegexController {
         });
     }
 
-    // Helper methods
+    // Method to display unique persons (from the Set)
+    public void displayUniquePersons() {
+        // Clear the current items in the ListView
+        Platform.runLater(() -> {
+            personListView.getItems().clear();
+
+            // Get the unique persons from the data manager
+            Set<DataManager.Person> uniquePersons = dataManager.getUniquePersons();
+
+            // Add each person's name and age to the ListView
+            for (DataManager.Person person : uniquePersons) {
+                personListView.getItems().add(person.getName() + " (" + person.getAge() + " years)");
+            }
+        });
+    }
+
     private void showError(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR, message, ButtonType.OK);
         alert.setHeaderText(null);
