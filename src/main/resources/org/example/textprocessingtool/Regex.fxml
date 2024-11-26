@@ -69,6 +69,23 @@
             </VBox>
         </Tab>
 
+        <!-- New Tab for Regex Examples -->
+        <Tab text="Regex Examples">
+            <VBox spacing="15" styleClass="regex-examples-tab">
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <Text text="Regex Examples" styleClass="tab-title" />
+                    <Region HBox.hgrow="ALWAYS" />
+                    <Button fx:id="displayRegexExamplesButton" text="Display Examples" styleClass="tool-button" />
+                </HBox>
+
+                <ListView fx:id="regexExamplesListView"
+                          prefHeight="200"
+                          styleClass="styled-list-view"
+                          VBox.vgrow="ALWAYS" />
+
+            </VBox>
+        </Tab>
+
         <Tab text="Data Management">
             <VBox spacing="15" styleClass="data-management-tab">
                 <HBox alignment="CENTER_LEFT" spacing="10">

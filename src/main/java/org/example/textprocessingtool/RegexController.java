@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Set;
 
 public class RegexController {
@@ -42,6 +43,10 @@ public class RegexController {
     @FXML private Button deletePersonButton;
     @FXML private ListView<String> personListView;
 
+    // Regex Examples
+    @FXML private ListView<String> regexExamplesListView;
+    @FXML private Button displayRegexExamplesButton;
+
     public void initialize() {
         // Initialize the controllers
         textProcessor = new TextProcessor();
@@ -59,6 +64,9 @@ public class RegexController {
         updatePersonButton.setOnAction(e -> updatePerson());
         deletePersonButton.setOnAction(e -> deletePerson());
 
+        // Set up action for displaying regex examples
+        displayRegexExamplesButton.setOnAction(e -> displayRegexExamples());
+
         // Populate person list on initialization
         refreshPersonList();
 
@@ -67,6 +75,17 @@ public class RegexController {
 
         // Add listener to update stats as user types
         inputTextArea.textProperty().addListener((observable, oldValue, newValue) -> updateTextStatistics());
+    }
+
+    // Display regex examples
+    private void displayRegexExamples() {
+        ArrayList<String> regexExamples = textProcessor.getRegexExamples();
+        regexExamplesListView.getItems().clear();
+        if (regexExamples.isEmpty()) {
+            regexExamplesListView.getItems().add("No examples available.");
+        } else {
+            regexExamplesListView.getItems().addAll(regexExamples);
+        }
     }
 
     // Text Processing methods
