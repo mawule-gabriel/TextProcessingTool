@@ -16,20 +16,23 @@
                     <Button fx:id="clearInputButton" text="Clear" styleClass="tool-button" />
                 </HBox>
 
-
                 <TextArea fx:id="inputTextArea"
                           promptText="Enter your text here..."
                           wrapText="true"
                           styleClass="styled-text-area"
                           VBox.vgrow="ALWAYS" />
 
-                <HBox spacing="10">
+                <!-- Word Count and Character Count Labels -->
+                <HBox spacing="10" VBox.vgrow="NEVER">
+                    <Label fx:id="wordCountLabel" text="Word Count: 0" styleClass="stats-label" />
+                    <Label fx:id="charCountLabel" text="Character Count: 0" styleClass="stats-label" />
+                </HBox>
 
+                <HBox spacing="10">
                     <TextField fx:id="regexPatternField"
                                promptText="Enter regex pattern..."
                                styleClass="styled-text-field"
                                HBox.hgrow="ALWAYS" />
-
 
                     <TextField fx:id="replacementField"
                                promptText="Enter replacement..."
@@ -53,13 +56,11 @@
                             styleClass="tool-button" />
                 </HBox>
 
-
                 <TextArea fx:id="resultTextArea"
                           editable="false"
                           promptText="Replaced text will appear here..."
                           styleClass="styled-text-area"
                           VBox.vgrow="ALWAYS" />
-
 
                 <ListView fx:id="resultListView"
                           prefHeight="150"
@@ -96,7 +97,6 @@
                             text="Delete Person"
                             styleClass="action-button red-button" />
                 </HBox>
-
 
                 <ListView fx:id="personListView"
                           prefHeight="200"

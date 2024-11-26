@@ -71,6 +71,7 @@
     -fx-transition: all 0.3s ease;
 }
 
+/* Primary Button */
 .primary-button {
     -fx-background-color: #3498DB;  /* Bright Blue */
 }
@@ -79,6 +80,7 @@
     -fx-background-color: #2980B9;  /* Darker Blue */
 }
 
+/* Secondary Button */
 .secondary-button {
     -fx-background-color: #2ECC71;  /* Green */
 }
@@ -87,6 +89,7 @@
     -fx-background-color: #27AE60;  /* Darker Green */
 }
 
+/* Red Button (Delete Person) */
 .red-button {
     -fx-background-color: #E74C3C;  /* Bright Red */
 }
@@ -95,12 +98,13 @@
     -fx-background-color: #C0392B;  /* Darker Red */
 }
 
+/* Tool Buttons */
 .tool-button {
-    -fx-background-color: #95A5A6;  /* Gray */
+    -fx-background-color: #BDC3C7;  /* Light Gray */
 }
 
 .tool-button:hover {
-    -fx-background-color: #7F8C8D;  /* Darker Gray */
+    -fx-background-color: #A6B0B6;  /* Darker Gray */
 }
 
 /* List Views */
@@ -172,4 +176,79 @@
     -fx-font-size: 12px;
     -fx-background-radius: 5px;
     -fx-padding: 5px;
+}
+
+/* Specific Button Styles */
+#clearInputButton {
+    -fx-background-color: #95A5A6;  /* Gray */
+}
+
+#clearInputButton:hover {
+    -fx-background-color: #7F8C8D;  /* Darker Gray */
+}
+
+#copyResultButton {
+    -fx-background-color: #95A5A6;  /* Gray */
+}
+
+#copyResultButton:hover {
+    -fx-background-color: #7F8C8D;  /* Darker Gray */
+}
+
+#saveResultButton {
+    -fx-background-color: #1ABC9C;  /* Teal */
+}
+
+#saveResultButton:hover {
+    -fx-background-color: #16A085;  /* Darker Teal */
+}
+
+#searchButton {
+    -fx-background-color: #3498DB;  /* Bright Blue */
+}
+
+#searchButton:hover {
+    -fx-background-color: #2980B9;  /* Darker Blue */
+}
+
+#replaceButton {
+    -fx-background-color: #2ECC71;  /* Green */
+}
+
+#replaceButton:hover {
+    -fx-background-color: #27AE60;  /* Darker Green */
+}
+
+#createPersonButton {
+    -fx-background-color: #3498DB;  /* Bright Blue */
+}
+
+#createPersonButton:hover {
+    -fx-background-color: #2980B9;  /* Darker Blue */
+}
+
+#updatePersonButton {
+    -fx-background-color: #2ECC71;  /* Green */
+}
+
+#updatePersonButton:hover {
+    -fx-background-color: #27AE60;  /* Darker Green */
+}
+
+#deletePersonButton {
+    -fx-background-color: #E74C3C;  /* Bright Red */
+}
+
+#deletePersonButton:hover {
+    -fx-background-color: #C0392B;  /* Darker Red */
+}
+
+/* Word and Character Count Labels */
+.stats-label {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #34495E; /* Slightly Lighter Blue for distinction */
+    -fx-padding: 5px;
+    -fx-background-radius: 5px;
+    -fx-background-color: #ECF0F1; /* Light background for visibility */
 }
