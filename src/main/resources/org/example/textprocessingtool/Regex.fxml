@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.textprocessingtool.RegexController"
+      spacing="20" styleClass="main-vbox">
+    <TabPane VBox.vgrow="ALWAYS">
+        <Tab text="Text Processing">
+            <VBox spacing="15" styleClass="text-processing-tab">
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <Text text="Text Processing" styleClass="tab-title" />
+                    <Region HBox.hgrow="ALWAYS" />
+                    <Button fx:id="clearInputButton" text="Clear" styleClass="tool-button" />
+                </HBox>
+
+
+                <TextArea fx:id="inputTextArea"
+                          promptText="Enter your text here..."
+                          wrapText="true"
+                          styleClass="styled-text-area"
+                          VBox.vgrow="ALWAYS" />
+
+                <HBox spacing="10">
+
+                    <TextField fx:id="regexPatternField"
+                               promptText="Enter regex pattern..."
+                               styleClass="styled-text-field"
+                               HBox.hgrow="ALWAYS" />
+
+
+                    <TextField fx:id="replacementField"
+                               promptText="Enter replacement..."
+                               styleClass="styled-text-field"
+                               HBox.hgrow="ALWAYS" />
+                </HBox>
+
+                <HBox spacing="10">
+                    <Button fx:id="searchButton"
+                            text="Search"
+                            styleClass="action-button primary-button" />
+                    <Button fx:id="replaceButton"
+                            text="Replace"
+                            styleClass="action-button primary-button" />
+                    <Region HBox.hgrow="ALWAYS" />
+                    <Button fx:id="copyResultButton"
+                            text="Copy Result"
+                            styleClass="tool-button" />
+                    <Button fx:id="saveResultButton"
+                            text="Save Result"
+                            styleClass="tool-button" />
+                </HBox>
+
+
+                <TextArea fx:id="resultTextArea"
+                          editable="false"
+                          promptText="Replaced text will appear here..."
+                          styleClass="styled-text-area"
+                          VBox.vgrow="ALWAYS" />
+
+
+                <ListView fx:id="resultListView"
+                          prefHeight="150"
+                          styleClass="styled-list-view"
+                          VBox.vgrow="ALWAYS" />
+            </VBox>
+        </Tab>
+
+        <Tab text="Data Management">
+            <VBox spacing="15" styleClass="data-management-tab">
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <Text text="Data Management" styleClass="tab-title" />
+                </HBox>
+
+                <HBox spacing="10">
+                    <TextField fx:id="nameField"
+                               promptText="Enter name"
+                               styleClass="styled-text-field"
+                               HBox.hgrow="ALWAYS" />
+                    <TextField fx:id="ageField"
+                               promptText="Enter age"
+                               styleClass="styled-text-field"
+                               HBox.hgrow="ALWAYS" />
+                </HBox>
+
+                <HBox spacing="10">
+                    <Button fx:id="createPersonButton"
+                            text="Create Person"
+                            styleClass="action-button primary-button" />
+                    <Button fx:id="updatePersonButton"
+                            text="Update Person"
+                            styleClass="action-button secondary-button" />
+                    <Button fx:id="deletePersonButton"
+                            text="Delete Person"
+                            styleClass="action-button red-button" />
+                </HBox>
+
+
+                <ListView fx:id="personListView"
+                          prefHeight="200"
+                          styleClass="styled-list-view"
+                          VBox.vgrow="ALWAYS" />
+            </VBox>
+        </Tab>
+    </TabPane>
+</VBox>
