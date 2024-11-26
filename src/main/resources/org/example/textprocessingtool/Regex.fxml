@@ -22,6 +22,12 @@
                           styleClass="styled-text-area"
                           VBox.vgrow="ALWAYS" />
 
+                <!-- Word Count and Character Count Labels -->
+                <HBox spacing="10" VBox.vgrow="NEVER">
+                    <Label fx:id="wordCountLabel" text="Word Count: 0" styleClass="stats-label" />
+                    <Label fx:id="charCountLabel" text="Character Count: 0" styleClass="stats-label" />
+                </HBox>
+
                 <HBox spacing="10">
                     <TextField fx:id="regexPatternField"
                                promptText="Enter regex pattern..."

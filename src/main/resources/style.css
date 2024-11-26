@@ -242,3 +242,13 @@
 #deletePersonButton:hover {
     -fx-background-color: #C0392B;  /* Darker Red */
 }
+
+/* Word and Character Count Labels */
+.stats-label {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #34495E; /* Slightly Lighter Blue for distinction */
+    -fx-padding: 5px;
+    -fx-background-radius: 5px;
+    -fx-background-color: #ECF0F1; /* Light background for visibility */
+}

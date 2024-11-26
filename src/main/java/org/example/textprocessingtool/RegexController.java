@@ -6,6 +6,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.stage.FileChooser;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -28,6 +29,10 @@ public class RegexController {
     @FXML private Button saveResultButton;
     @FXML private ListView<String> resultListView;
     @FXML private TextArea resultTextArea;
+
+    // Advanced Text Analysis
+    @FXML private Label wordCountLabel;
+    @FXML private Label charCountLabel;
 
     // Data Management
     @FXML private TextField nameField;
@@ -56,6 +61,12 @@ public class RegexController {
 
         // Populate person list on initialization
         refreshPersonList();
+
+        // Update text statistics initially
+        updateTextStatistics();
+
+        // Add listener to update stats as user types
+        inputTextArea.textProperty().addListener((observable, oldValue, newValue) -> updateTextStatistics());
     }
 
     // Text Processing methods
@@ -98,6 +109,7 @@ public class RegexController {
         replacementField.clear();
         resultTextArea.clear();
         resultListView.getItems().clear();
+        updateTextStatistics();  // Update stats when input is cleared
     }
 
     private void copyResultToClipboard() {
@@ -222,6 +234,26 @@ public class RegexController {
                 personListView.getItems().add(person.getName() + " (" + person.getAge() + " years)");
             }
         });
+    }
+
+    // Advanced Text Analysis - Update word and character count
+    private void updateTextStatistics() {
+        String inputText = inputTextArea.getText();
+        int wordCount = countWords(inputText);
+        int charCount = inputText.length();
+
+        // Update the labels with the calculated statistics
+        wordCountLabel.setText("Word Count: " + wordCount);
+        charCountLabel.setText("Character Count: " + charCount);
+    }
+
+    // Helper method to count words in the text
+    private int countWords(String text) {
+        if (text == null || text.trim().isEmpty()) {
+            return 0;
+        }
+        String[] words = text.trim().split("\\s+");
+        return words.length;
     }
 
     private void showError(String message) {
