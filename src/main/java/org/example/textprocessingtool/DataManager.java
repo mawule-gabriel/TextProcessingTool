@@ -64,20 +64,6 @@ public class DataManager {
         return personSet;
     }
 
-    // Display all persons
-    public void displayPersons() {
-        for (Person person : personList) {
-            System.out.println(person);
-        }
-    }
-
-    // Display all unique persons (from Set)
-    public void displayUniquePersons() {
-        for (Person person : personSet) {
-            System.out.println(person);
-        }
-    }
-
     // Person class with equals and hashCode implemented
     static class Person {
         private String name;
